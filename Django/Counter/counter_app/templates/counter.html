@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'CSS/counter.css' %}">
+</head>
+<body>
+    <h1>Counter</h1>
+    <h5>{{ request.session.visits }}</h5>
+</body>
+</html>
