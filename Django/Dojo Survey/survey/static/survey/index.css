@@ -1,0 +1,26 @@
+* {
+    font-family: cursive;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: rgb(96, 185, 181);
+}
+
+.main {
+    border: 3px solid black;
+    border-radius: 3px 3px;
+    margin: 10% auto;
+    padding: 3vh 3vh 6vh 3vh;
+    width: 30%;
+}
+
+div {
+    margin: 2vh 0 0 0;
+}
+
+.btn {
+    float: right;
+    
+}

@@ -1,0 +1,19 @@
+* {
+    font-family: cursive;
+}
+
+.maincon {
+    border: 3px solid black;
+    border-radius: 3px 3px;
+    width: 30%;
+    margin: 10% auto;
+    padding: 3vh 3vh 6vh 3vh;
+}
+
+h1 {
+    color: rgb(180, 142, 70);
+}
+
+#back_btn {
+    float: right;
+}

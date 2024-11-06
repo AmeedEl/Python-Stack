@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'survey/index.css' %}">
+</head>
+<body>
+    <div class="main">
+        <h1>Dojo Survey</h1>
+        <form action="{% url 'result' %}" method="POST">
+            {% csrf_token %}
+
+            <!-- Name Field -->
+            <div class="name_f">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+
+            <!-- Location Field (Radio Buttons) -->
+             <div class="loc_f">
+                <label for="location">location:</label>
+                <select name="location" id="location">
+                    <option value="Beit Duqqu">Beit Duqqu</option>
+                    <option value="Tubas">Tubas</option>
+                    <option value="Jenin">Jenin</option>
+                    <option value="Tulkarm">Tulkarm</option>
+                    <option value="Beit Duqqu">Beit Duqqu</option>
+                </select>
+             </div>
+
+             <!-- Language Field -->
+              <div class="lang_f">
+                <label for="language">Favorite Language:</label>
+                <select name="language" id="language">
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Python">Python</option>
+                    <option value="Java">Java</option>
+                </select>
+              </div>
+
+              <!-- Comment field -->
+               <div class="comment_f">
+                <label for="comment">Comments:</label>
+                <textarea name="comment" id="comment" rows="3"></textarea>
+               </div>
+
+               <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
