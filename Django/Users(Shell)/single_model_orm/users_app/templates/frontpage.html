@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'users_app/frontpage.css' %}">
+</head>
+<body>
+    <div class="facebox">
+        <h1>TEST</h1>
+        <form action="{% url 'signin' %}" method="POST">
+            {% csrf_token %}
+
+            <!-- Email input -->
+             <div class="email">
+                <label for="email">Email :</label>
+                <input type="email" name="email" id="email">
+             </div>
+
+        </form>
+    </div>
+    
+    
+</body>
+</html>
