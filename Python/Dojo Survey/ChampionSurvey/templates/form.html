@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="main">
+        <h2>Champion Survey</h2>
+        <form action="/result" method="POST">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+            </div>
+
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+            </div>
+
+            <div>
+                <label for="favorite_champion">Favorite Champion</label>
+                <input type="text" id="favorite_champion" name="favorite_champion">
+            </div>
+
+            <div>
+                <label class="form-label">What do you enjoy most about the game ?</label><br>
+                <div>
+                    <input type="checkbox" id="optional" name="survey_answers" value="Strategy">
+                    <label for="optional">Strategy</label>
+                </div>
+                
+                <div>
+                    <input type="checkbox" id="option2" name="survey_answers" value="Graphics">
+                    <label for="option2">Graphics</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="option3" name="survey_answers" value="Community">
+                    <label for="option3">Community</label>
+                </div>
+            </div>
+
+            <div>
+                <label class="form-label">Preferred Play Style</label><br>
+                <div>
+                    <input type="radio" id="radio1" name="radio_choice" value="Aggressive">
+                    <label for="radio1">Aggressive</label>
+                </div>
+                <div>
+                    <input type="radio" id="radio2" name="radio_choice" value="Defensive">
+                    <label for="radio2">Defensive</label>
+                </div>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
