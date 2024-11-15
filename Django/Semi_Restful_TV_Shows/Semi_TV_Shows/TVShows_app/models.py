@@ -1,4 +1,36 @@
 from django.db import models
+from datetime import datetime
+
+class ShowsManager(models.Manager):
+    def basic_validator(self, postData):
+        errors = {}
+        
+        if len(postData['title']) < 2:
+            errors["title"] = "Show title should be at least 2 characters."
+            return errors
+        
+        existing_show = Show.objects.filter(title=postData['title']).exclude(id=postData.get('id'))
+        if existing_show.exists():
+            errors["title"] = "A show with this title already exists."
+            return errors
+        
+        if len(postData['network']) < 3:
+            errors["desc"] = "Network name should be at least 3 characters."
+            return errors
+        
+        if not postData.get('released_date'):
+            errors["released_date"] = "Release date is required."
+            return errors
+        
+        if len(postData['desc']) > 1 and len(postData['desc']) < 10:
+            errors["desc"] = "Show description should be at least 10 characters."
+            return errors
+        
+        released_date = datetime.strptime(postData['released_date'], "%Y-%m-%d").date()
+        if released_date > datetime.today().date():
+            errors["released_date"] = "Release date cannot be in the future."
+            return errors
+        return errors
 
 class Show(models.Model):
     title = models.CharField(max_length=50)
@@ -7,40 +39,5 @@ class Show(models.Model):
     desc = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
-def get_all_shows():
-    return Show.objects.all()
-
-def get_show_by_id(id):
-    return Show.objects.get(id = id)
-
-def create_show(data):
-    # title = data['title']
-    # network = data['network']
-    # released_date = data['released_date']
-    # desc = data['desc']
-    # Show.objects.create(title=title, network=network, released_date=released_date, desc=desc)
-    
-    # Another way that will do the same job..
-    Show.objects.create(title=data['title'], network=data['network'], released_date=data['released_date'], desc=data['desc'])
-    
-    
-def delete_show(id):
-    show = Show.objects.get(id=id)
-    show.delete()
-    
-def edit_show(id):
-    show = Show.objects.get(id=id)
-    return show
-
-def update(id, title, network, released_date, desc):
-    show = Show.objects.get(id=id)
-    show.title = title
-    show.network = network
-    show.released_date = released_date
-    show.desc = desc
-    show.save()
-    return show
- 
-    
+    objects = ShowsManager()
     
